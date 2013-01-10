@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.phonegap.example"
+    version   = "1.0.0">
+
+<name>ATP movil</name>
+<icon src="icon.png" />
+
+<description>
+Aplicacion movil de ATP.
+</description>
+
+<author href="https://exposicionesvirtuales.com" email="webmaster@exposicionesvirtuales.com">
+Esteban Ruiz (@5tivi)
+</author>
+
+</widget>
