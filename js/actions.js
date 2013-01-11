@@ -56,16 +56,39 @@ function search_products(formid)
 	_.pjp(ROOT+"?c=central&m=search_products",data,"check_response");
 }
 
-function agregar_al_carrito(id,cantidad)
+function agregar_al_carrito(id)
 {
+	console.log("agregando el "+id);
 	if(localStorage.getObject("carrito")==null)
 	{
-		console.log("null");
+		console.log("Aun no hay carrito");
+		window.carrito={};
+		window.carrito[id]=traer_minima_cantidad(id);
+		localStorage.setObject("carrito",window.carrito);
 	}
 	else
 	{
-		console.log(localStorage.getObject("carrito"));
+		console.log("Ya hay un carrito");
+		window.carrito=localStorage.getObject("carrito");
+		if(id in window.carrito)
+		{
+			console.log("Ya está en el carrito !");
+			window.carrito[id]=window.carrito[id]+traer_minima_cantidad(id);
+			localStorage.setObject("carrito",window.carrito);
+		}
+		else
+		{
+			console.log("No estaba en el carrito !");
+			window.carrito[id]=traer_minima_cantidad(id);
+			localStorage.setObject("carrito",window.carrito);
+		}
 	}
+	console.log(localStorage.getObject("carrito"));
+}
+
+function traer_minima_cantidad(id)
+{
+	return 1;
 }
 
 

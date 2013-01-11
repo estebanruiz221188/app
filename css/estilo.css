@@ -32,6 +32,11 @@
 	margin: 0px -15px !important;
 }
 
+.center
+{
+	text-align: center;
+}
+
 .center *
 {
 	text-align:center
@@ -215,4 +220,12 @@
 .pimage
 {
 	text-align: center;
+}
+
+.variante
+{
+	border-radius: 10px;
+	border: 2px solid #8D8D8D;
+	padding: 10px;
+	margin: 5px 0px;
 }
