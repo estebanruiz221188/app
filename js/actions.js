@@ -84,11 +84,27 @@ function agregar_al_carrito(id)
 		}
 	}
 	console.log(localStorage.getObject("carrito"));
+	mostrar_carrito_de_compras();
 }
 
 function traer_minima_cantidad(id)
 {
 	return 1;
+}
+
+function mostrar_carrito_de_compras()
+{
+	$.mobile.changePage("#page7");
+	products="";
+	if(localStorage.getObject("carrito")==null)
+	{
+		products+="<h3>No hay productos en su carrito de compras.</h3>";
+		$("#lista_carrito").html(products);
+	}
+	else
+	{
+		_.pjp(ROOT+"?c=central&m=load_carrito",{"carrito":localStorage.getObject("carrito")},"check_response");
+	}
 }
 
 

@@ -37,7 +37,13 @@
         	<div class="icon_container"><a href="#"><div class="youtube_icon"></div><br>Youtube</a></div>
         	<div class="icon_container"><a href="#"><div class="mail_icon"></div><br>Boletín</a></div>
         </div>
-        
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="javascript:mostrar_carrito_de_compras();">Carrito de compras</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -45,11 +51,18 @@
 	<div data-role="header">
 		<a href="#page" data-icon="home">Inicio</a>
         <h1>Información de la empresa</h1>
-        <a href="#page6" data-icon="search">Buscar</a>
 	</div>
 	<div data-role="content">
         <div id="lista_paginas">
         </div>
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+				<li><a href="javascript:mostrar_carrito_de_compras();">Carrito de compras</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -57,10 +70,17 @@
 	<div data-role="header">
     	<a href="#page" data-icon="home">Inicio</a>
 		<h1 id="titulo_pagina"></h1>
-		<a href="#page6" data-icon="search">Buscar</a>
 	</div>
 	<div data-role="content">
 		<div id="contenido_pagina"></div>
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+				<li><a href="javascript:mostrar_carrito_de_compras();">Carrito de compras</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -68,11 +88,18 @@
 	<div data-role="header">
 		<a href="#page" data-icon="home">Inicio</a>
         <h1>Productos</h1>
-        <a href="#page6" data-icon="search">Buscar</a>
 	</div>
 	<div data-role="content">
         <div id="lista_cat">
         </div>
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+				<li><a href="javascript:mostrar_carrito_de_compras();">Carrito de compras</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -80,10 +107,17 @@
 	<div data-role="header">
     	<a href="#page" data-icon="home">Inicio</a>
 		<h1 id="titulo_producto"></h1>
-		<a href="#page6" data-icon="search">Buscar</a>
 	</div>
 	<div data-role="content">
 		<div id="contenido_producto"></div>
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+				<li><a href="javascript:mostrar_carrito_de_compras();">Carrito de compras</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -91,7 +125,6 @@
 	<div data-role="header">
     	<a href="#page" data-icon="home">Inicio</a>
 		<h1 id="titulo_busqueda"></h1>
-        <a href="#page7" data-icon="search">Carrito</a>
 	</div>
 	<div data-role="content">
 		<form id="f2" action="javascript:search_products('f2')">
@@ -104,6 +137,14 @@
     	</form>
 		<div id="lista_search"></div>
 	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+				<li><a href="javascript:mostrar_carrito_de_compras();">Carrito de compras</a></li>
+			</ul>
+		</div>
+	</div>
 </div>
 
 <div data-role="page" id="page7" class="pagina">
@@ -113,10 +154,19 @@
 	</div>
 	<div data-role="content">
 		<div id="lista_carrito">
-			aqui va la lista de productos :D
+			<h2>Cargando datos...</h2>
+		</div>
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+			</ul>
 		</div>
 	</div>
 </div>
+
+
 
 </body>
 </html>
