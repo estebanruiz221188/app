@@ -59,7 +59,7 @@ function search_products(formid)
 function agregar_al_carrito(id)
 {
 	//console.log("agregando el "+id);
-	if(localStorage.getObject("carrito")==null)
+	/*if(localStorage.getObject("carrito")==null)
 	{
 		//console.log("Aun no hay carrito");
 		window.carrito={};
@@ -82,7 +82,7 @@ function agregar_al_carrito(id)
 			window.carrito[id]=traer_minima_cantidad(id);
 			localStorage.setObject("carrito",window.carrito);
 		}
-	}
+	}*/
 	//console.log(localStorage.getObject("carrito"));
 	mostrar_carrito_de_compras();
 }
