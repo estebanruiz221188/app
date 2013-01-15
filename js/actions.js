@@ -87,6 +87,82 @@ function agregar_al_carrito(id)
 	mostrar_carrito_de_compras();
 }
 
+function disminuir_del_carrito(id)
+{
+	console.log("agregando el "+id);
+	if(localStorage.getObject("carrito")==null)
+	{
+		
+	}
+	else
+	{
+		console.log("Ya hay un carrito");
+		window.carrito=localStorage.getObject("carrito");
+		if(id in window.carrito)
+		{
+			console.log("Ya está en el carrito !");
+			window.carrito[id]=window.carrito[id]-traer_minima_cantidad(id);
+			localStorage.setObject("carrito",window.carrito);
+			console.log("En el carrito hay "+window.carrito[id]+" unidades");
+			if(window.carrito[id]<=0)
+			{
+				delete window.carrito[id];
+				localStorage.setObject("carrito",window.carrito);
+			}
+			var cont = 0;
+			for(var e in window.carrito)
+			    if(window.carrito.hasOwnProperty(e))
+			        cont++;
+			if(cont==0)
+			{
+				window.carrito=undefined;
+				localStorage.removeItem("carrito");
+			}
+			else
+			{
+				localStorage.setObject("carrito",window.carrito);
+			}
+		}
+	}
+	console.log(localStorage.getObject("carrito"));
+	mostrar_carrito_de_compras();
+}
+
+function remover_del_carrito(id)
+{
+	console.log("agregando el "+id);
+	if(localStorage.getObject("carrito")==null)
+	{
+		
+	}
+	else
+	{
+		console.log("Ya hay un carrito");
+		window.carrito=localStorage.getObject("carrito");
+		if(id in window.carrito)
+		{
+			console.log("Ya está en el carrito !");
+			delete window.carrito[id];
+			localStorage.setObject("carrito",window.carrito);
+			var cont = 0;
+			for(var e in window.carrito)
+			    if(window.carrito.hasOwnProperty(e))
+			        cont++;
+			if(cont==0)
+			{
+				window.carrito=undefined;
+				localStorage.removeItem("carrito");
+			}
+			else
+			{
+				localStorage.setObject("carrito",window.carrito);
+			}
+		}
+	}
+	console.log(localStorage.getObject("carrito"));
+	mostrar_carrito_de_compras();
+}
+
 function traer_minima_cantidad(id)
 {
 	return 1;
@@ -103,7 +179,8 @@ function mostrar_carrito_de_compras()
 	}
 	else
 	{
-		_.pjp(ROOT+"?c=central&m=load_carrito",{"carrito":localStorage.getObject("carrito")},"check_response");
+		$('#lista_carrito').html("");
+		_.pjp(ROOT+"?c=central&m=load_carrito",{"carrito":localStorage.getObject("carrito"),"expositor_id":EXP},"check_response");
 	}
 }
 

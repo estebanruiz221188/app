@@ -229,3 +229,29 @@
 	padding: 10px;
 	margin: 5px 0px;
 }
+
+.special-count
+{
+	top:auto !important;
+	font-size: 13px !important;
+}
+
+.total_carrito
+{
+	text-align: center;
+}
+
+.carrito-realizar
+{
+	width: 40% !important;
+	min-width: 300px !important;
+	margin: 0px auto !important;
+}
+
+.accion-c
+{
+	width: 20% !important;
+	min-width: 100px !important;
+	margin: 0px auto !important;
+	display: inline-block !important;
+}
