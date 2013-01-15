@@ -19,7 +19,7 @@ $(document).bind("mobileinit", function(){
 
 	window.ROOT=routes[load_default_route];
 
-	Storage.prototype.setObject = function(key, value)
+	/*setObject = function(key, value)
 	{
     	this.setItem(key, JSON.stringify(value));
 	}
@@ -27,7 +27,7 @@ $(document).bind("mobileinit", function(){
 	Storage.prototype.getObject = function(key)
 	{
     	return JSON.parse(this.getItem(key));
-	}
+	}*/
 
 });
 
