@@ -13,7 +13,7 @@ function check_response(data)
 	}
 	if(data.msg)
 	{
-		//console.log(data.msg);
+		console.log(data.msg);
 	}
 }
 
