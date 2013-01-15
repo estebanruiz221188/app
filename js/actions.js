@@ -59,13 +59,13 @@ function search_products(formid)
 function agregar_al_carrito(id)
 {
 	//console.log("agregando el "+id);
-	/*if(localStorage.getObject("carrito")==null)
+	if(localStorage.getObject("carrito")==null)
 	{
 		//console.log("Aun no hay carrito");
 		window.carrito={};
 		window.carrito[id]=traer_minima_cantidad(id);
 		localStorage.setObject("carrito",window.carrito);
-	}
+	}/*
 	else
 	{
 		//console.log("Ya hay un carrito");
