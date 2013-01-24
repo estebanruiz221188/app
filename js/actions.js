@@ -192,4 +192,9 @@ function mostrar_carrito_de_compras()
 	}
 }
 
+function crear_pedido()
+{
+	
+}
+
 load_minimos_y_multiplos();
