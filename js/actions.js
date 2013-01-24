@@ -194,7 +194,7 @@ function mostrar_carrito_de_compras()
 
 function crear_pedido()
 {
-	
+	$.mobile.changePage("#page8");
 }
 
 load_minimos_y_multiplos();

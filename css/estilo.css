@@ -228,6 +228,7 @@
 	border: 2px solid #8D8D8D;
 	padding: 10px;
 	margin: 5px 0px;
+	background: #EEE;
 }
 
 .special-count
@@ -256,3 +257,8 @@
 	display: inline-block !important;
 }
 
+.pedidotext
+{
+	font-size: 1.3em;
+	text-align: center;;
+}

@@ -166,5 +166,36 @@
 	</div>
 </div>
 
+<div data-role="page" id="page8" class="pagina">
+	<div data-role="header">
+    	<a href="#page" data-icon="home">Inicio</a>
+		<h1 id="titulo_busqueda">Confirmar pedido</h1>
+	</div>
+	<div data-role="content">
+		<div class="variante">
+			Pedido por un total de: <span id="total_pedido"></span>
+		</div>
+		<form id="pedido" action="javascript:enviar_pedido()">
+			<div class="pedidotext">Nombre:</div>
+			<input type="text" name="nombre">
+			<div class="pedidotext">E-mail:</div>
+			<input type="text" name="mail">
+			<div class="pedidotext">Teléfono:</div>
+			<input type="text" name="telefono">
+			<div class="pedidotext">Dirección:</div>
+			<input type="text" name="direccion">
+			<input type="submit" value="Confirmar pedido" data-role="button" data-theme='b' data-icon='check' data-mini="true">
+    	</form>
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+				<li><a href="javascript:mostrar_carrito_de_compras();">Carrito de compras</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>
