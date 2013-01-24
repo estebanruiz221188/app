@@ -29,6 +29,11 @@ function load_pages()
 	_.pjp(ROOT+"?c=central&m=load_pages",{"id":EXP},"check_response");
 }
 
+function load_minimos_y_multiplos()
+{
+	_.pjp(ROOT+"?c=central&m=load_minimos_y_multiplos",{"id":EXP},"check_response");
+}
+
 function load_singular_page(id)
 {
 	_.pjp(ROOT+"?c=central&m=load_singular_page",{"id":id},"check_response");
@@ -58,96 +63,47 @@ function search_products(formid)
 
 function agregar_al_carrito(id)
 {
-	//console.log("agregando el "+id);
-	/*if(localStorage.getObject("carrito")==null)
-	{
-		//console.log("Aun no hay carrito");
-		carrito={};
-		carrito[id]=traer_minima_cantidad(id);
-		localStorage.setObject("carrito",carrito);
-	}
-	else
-	{
-		//console.log("Ya hay un carrito");
-		carrito=localStorage.getObject("carrito");
-		if(id in carrito)
-		{
-			//console.log("Ya está en el carrito !");
-			carrito[id]=carrito[id]+traer_minima_cantidad(id);
-			localStorage.setObject("carrito",carrito);
-		}
-		else
-		{
-			//console.log("No estaba en el carrito !");
-			carrito[id]=traer_minima_cantidad(id);
-			localStorage.setObject("carrito",carrito);
-		}
-	}*/
 	if(typeof carrito==='undefined')
 	{
-		//console.log("Aun no hay carrito");
 		carrito={};
 		carrito[id]=traer_minima_cantidad(id);
 	}
 	else
 	{
-		//console.log("Ya hay un carrito");
 		if(id in carrito)
 		{
-			//console.log("Ya está en el carrito !");
-			carrito[id]=carrito[id]+traer_minima_cantidad(id);
+			carrito[id]=carrito[id]+traer_multiplos(id);
 		}
 		else
 		{
-			//console.log("No estaba en el carrito !");
 			carrito[id]=traer_minima_cantidad(id);
 		}
 	}
-	//console.log(localStorage.getObject("carrito"));
 	mostrar_carrito_de_compras();
 }
 
 function disminuir_del_carrito(id)
 {
-	//console.log("agregando el "+id);
 	if(typeof carrito==='undefined')
 	{
 		
 	}
 	else
 	{
-		//console.log("Ya hay un carrito");
-		/*carrito=localStorage.getObject("carrito");
 		if(id in carrito)
 		{
-			//console.log("Ya está en el carrito !");
-			carrito[id]=carrito[id]-traer_minima_cantidad(id);
-			localStorage.setObject("carrito",carrito);
-			//console.log("En el carrito hay "+carrito[id]+" unidades");
-			if(carrito[id]<=0)
+			if(carrito[id]==traer_minima_cantidad(id))
 			{
-				delete carrito[id];
-				localStorage.setObject("carrito",carrito);
-			}
-			var cont = 0;
-			for(var e in carrito)
-			    if(carrito.hasOwnProperty(e))
-			        cont++;
-			if(cont==0)
-			{
-				carrito=undefined;
-				localStorage.removeItem("carrito");
+				carrito[id]=0;
 			}
 			else
 			{
-				localStorage.setObject("carrito",carrito);
+				carrito[id]=carrito[id]-traer_multiplos(id);
 			}
-		}*/
-		if(id in carrito)
-		{
-			//console.log("Ya está en el carrito !");
-			carrito[id]=carrito[id]-traer_minima_cantidad(id);
-			//console.log("En el carrito hay "+carrito[id]+" unidades");
+			if(carrito[id]>0 && carrito[id]<traer_minima_cantidad(id))
+			{
+				carrito[id]=traer_minima_cantidad(id);
+			}
 			if(carrito[id]<=0)
 			{
 				delete carrito[id];
@@ -165,51 +121,19 @@ function disminuir_del_carrito(id)
 			}
 		}
 	}
-	//console.log(localStorage.getObject("carrito"));
 	mostrar_carrito_de_compras();
 }
 
 function remover_del_carrito(id)
 {
-	//console.log("agregando el "+id);
-	/*if(localStorage.getObject("carrito")==null)
-	{
-		
-	}
-	else
-	{
-		//console.log("Ya hay un carrito");
-		carrito=localStorage.getObject("carrito");
-		if(id in carrito)
-		{
-			//console.log("Ya está en el carrito !");
-			delete carrito[id];
-			localStorage.setObject("carrito",carrito);
-			var cont = 0;
-			for(var e in carrito)
-			    if(carrito.hasOwnProperty(e))
-			        cont++;
-			if(cont==0)
-			{
-				carrito=undefined;
-				localStorage.removeItem("carrito");
-			}
-			else
-			{
-				localStorage.setObject("carrito",carrito);
-			}
-		}
-	}*/
 	if(typeof carrito==='undefined')
 	{
 		
 	}
 	else
 	{
-		//console.log("Ya hay un carrito");
 		if(id in carrito)
 		{
-			//console.log("Ya está en el carrito !");
 			delete carrito[id];
 			var cont = 0;
 			for(var e in carrito)
@@ -217,7 +141,7 @@ function remover_del_carrito(id)
 			        cont++;
 			if(cont==0)
 			{
-				carrito=undefined;
+				delete carrito;
 			}
 			else
 			{
@@ -225,32 +149,38 @@ function remover_del_carrito(id)
 			}
 		}
 	}
-	//console.log(localStorage.getObject("carrito"));
 	mostrar_carrito_de_compras();
 }
 
 function traer_minima_cantidad(id)
 {
-	return 1;
+	if(typeof min_mul[id]==='undefined')
+	{
+		return 1;
+	}
+	else
+	{
+		return parseInt(min_mul[id]["min"]);
+	}
+}
+
+function traer_multiplos(id)
+{
+	if(typeof min_mul[id]==='undefined')
+	{
+		return 1;
+	}
+	else
+	{
+		return parseInt(min_mul[id]["mul"]);
+	}
 }
 
 function mostrar_carrito_de_compras()
 {
-	/*$.mobile.changePage("#page7");
-	products="";
-	if(localStorage.getObject("carrito")==null)
-	{
-		products+="<h3>No hay productos en su carrito de compras.</h3>";
-		$("#lista_carrito").html(products);
-	}
-	else
-	{
-		$('#lista_carrito').html("");
-		_.pjp(ROOT+"?c=central&m=load_carrito",{"carrito":localStorage.getObject("carrito"),"expositor_id":EXP},"check_response");
-	}*/
 	$.mobile.changePage("#page7");
 	products="";
-	if(carrito==undefined)
+	if(typeof carrito==='undefined')
 	{
 		products+="<h3>No hay productos en su carrito de compras.</h3>";
 		$("#lista_carrito").html(products);
@@ -262,66 +192,4 @@ function mostrar_carrito_de_compras()
 	}
 }
 
-
-/*function verify_session()
-{
-	$.mobile.changePage('#page');
-	if(localStorage.getItem("session")==null)
-	{
-		$("#init-div").hide();
-		$("#login-div").show("Clip");
-	}
-	else
-	{
-		data={};
-		data.session=localStorage.getItem("session");
-		_.pjp(ROOT+"?c=webmaster&m=validatesession",data,"check_response");
-	}
-}
-
-$(document).ready(function(event){verify_session();});*/
-
-
-
-/*function test()
-{
-	data={};
-	data.id="1";
-	_.pjp(ROOT+"?c=appserver&m=load_data_expositor",data,"check_response");
-}
-
-function login()
-{
-	data=_.gf("login");
-	_.pjp(ROOT+"?c=webmaster&m=loginmaster",data,"login_respuesta");
-}
-
-function login_respuesta(data)
-{
-	if(data.res)
-	{
-		$("#login-div").hide();
-		$("#master-list").show("Clip");
-		localStorage.setItem("session",data.last_session_id);
-		_.reset("login");
-	}
-	else
-	{
-		_.msgl("Error ! Intente de nuevo.","login-msg",true);
-	}
-}*/
-
-/*function unlogin()
-{
-	data=_.gf("login");
-	_.pjp(ROOT+"?c=webmaster&m=unlogmaster",data,"unlogin_respuesta");
-}
-
-function unlogin_respuesta(data)
-{
-	if(data.unlog)
-	{
-		$("#login-div").show("Clip");
-		$("#master-list").hide();
-	}
-}*/
+load_minimos_y_multiplos();
