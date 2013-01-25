@@ -197,4 +197,17 @@ function crear_pedido()
 	$.mobile.changePage("#page8");
 }
 
+function enviar_pedido()
+{
+	p=_.gf("pedido");
+	_.pjp(ROOT+"?c=central&m=enviar_pedido",{"carrito":carrito,"expositor_id":EXP,pedido_info:p},"check_response");
+}
+
+function load_formas_de_pago()
+{
+	_.pjp(ROOT+"?c=central&m=load_formas_de_pago",{"expositor_id":EXP},"check_response");
+}
+
 load_minimos_y_multiplos();
+
+load_formas_de_pago();
