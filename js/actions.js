@@ -154,26 +154,28 @@ function remover_del_carrito(id)
 
 function traer_minima_cantidad(id)
 {
-	if(typeof min_mul[id]==='undefined')
+	/*if(typeof min_mul[id]==='undefined')
 	{
 		return 1;
 	}
 	else
 	{
 		return parseInt(min_mul[id]["min"]);
-	}
+	}*/
+	return 1;
 }
 
 function traer_multiplos(id)
 {
-	if(typeof min_mul[id]==='undefined')
+	/*if(typeof min_mul[id]==='undefined')
 	{
 		return 1;
 	}
 	else
 	{
 		return parseInt(min_mul[id]["mul"]);
-	}
+	}*/
+	return 1;
 }
 
 function mostrar_carrito_de_compras()
@@ -216,6 +218,6 @@ function seguircomprando()
 	$.mobile.changePage('#page6');
 }
 
-load_minimos_y_multiplos();
+//load_minimos_y_multiplos();
 
-load_formas_de_pago();
+//load_formas_de_pago();
