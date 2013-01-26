@@ -201,11 +201,19 @@ function enviar_pedido()
 {
 	p=_.gf("pedido");
 	_.pjp(ROOT+"?c=central&m=enviar_pedido",{"carrito":carrito,"expositor_id":EXP,pedido_info:p},"check_response");
+	$("#resultado_pedido").html("Procesando su pedido...");
+	$.mobile.changePage('#page9');
+
 }
 
 function load_formas_de_pago()
 {
 	_.pjp(ROOT+"?c=central&m=load_formas_de_pago",{"expositor_id":EXP},"check_response");
+}
+
+function seguircomprando()
+{
+	$.mobile.changePage('#page6');
 }
 
 load_minimos_y_multiplos();
