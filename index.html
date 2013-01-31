@@ -10,7 +10,6 @@
 <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
 <script src="js/nicedt.js" type="text/javascript"></script>
 <script src="js/actions.js" type="text/javascript"></script>
-<script src="js/control.js" type="text/javascript"></script>
 </head> 
 <body> 
 
@@ -176,15 +175,220 @@
 			Pedido por un total de: <span id="total_pedido"></span>
 		</div>
 		<form id="pedido" action="javascript:enviar_pedido()">
+			<h3>Información general del comprador:</h3>
 			<div class="pedidotext">Nombre:</div>
 			<input type="text" name="nombre">
 			<div class="pedidotext">E-mail:</div>
 			<input type="text" name="mail">
 			<div class="pedidotext">Teléfono:</div>
 			<input type="text" name="telefono">
+			<h3>Información de facturación:</h3>
+			<div class="pedidotext">Razón social:</div>
+			<input type="text" name="razon_social">
+			<div class="pedidotext">Nombre Comercial:</div>
+			<input type="text" name="nombre_comercial">
+			<div class="pedidotext">RFC:</div>
+			<input type="text" name="rfc">
 			<div class="pedidotext">Dirección:</div>
 			<input type="text" name="direccion">
+			<div class="pedidotext">Colonia:</div>
+			<input type="text" name="colonia">
+			<div class="pedidotext">Delegación o municipio:</div>
+			<input type="text" name="delegacion">
+			<div class="pedidotext">Ciudad o población:</div>
+			<input type="text" name="poblacion">
+			<div class="pedidotext">Estado:</div>
+			<input type="text" name="estado">
+			<div class="pedidotext">Pais:</div>
+			<select name="pais_id">
+				<option value="2">Alemania / Germany</option>
+				<option value="3">Argentina</option>
+				<option value="4">Aruba</option>
+				<option value="5">Australia</option>
+				<option value="6">Bahamas</option>
+				<option value="7">Barbados</option>
+				<option value="76">Bélgica / Belgium</option>
+				<option value="8">Belice / Belize</option>
+				<option value="9">Bermuda</option>
+				<option value="10">Bolivia</option>
+				<option value="11">Brasil / Brazil</option>
+				<option value="12">Cameroon</option>
+				<option value="13">Canada</option>
+				<option value="15">Chile</option>
+				<option value="72">China</option>
+				<option value="16">Colombia</option>
+				<option value="17">Costa Rica</option>
+				<option value="18">Cuba</option>
+				<option value="42">D.P.R. Korea</option>
+				<option value="19">Dominica</option>
+				<option value="21">Ecuador</option>
+				<option value="22">El Salvador</option>
+				<option value="23">Equatorial Guinea</option>
+				<option value="64">España / Spain</option>
+				<option value="24">Francia / France</option>
+				<option value="25">Gibraltar</option>
+				<option value="26">Granada / Grenada</option>
+				<option value="27">Guatemala</option>
+				<option value="28">Guinea</option>
+				<option value="29">Guyana</option>
+				<option value="30">Haiti</option>
+				<option value="33">Holanda / Netherlands</option>
+				<option value="31">Honduras</option>
+				<option value="32">Hong Kong SAR, PRC</option>
+				<option value="34">India</option>
+				<option value="47">Inglaterra / United Kingdom</option>
+				<option value="35">Iran</option>
+				<option value="36">Iraq</option>
+				<option value="37">Irlanda / Ireland</option>
+				<option value="14">Islas Caimán / Cayman Islands</option>
+				<option value="48">Islas Malvinas / Maldives</option>
+				<option value="38">Israel</option>
+				<option value="39">Italia / Italy</option>
+				<option value="40">Jamaica</option>
+				<option value="41">Japón / Japan</option>
+				<option value="43">Korea</option>
+				<option value="44">Libano / Lebanon</option>
+				<option value="45">Liechtenstein</option>
+				<option value="46">Luxembourg</option>
+				<option value="49">Mali</option>
+				<option value="50">Malta</option>
+				<option value="51">Martinique</option>
+				<option value="52">Mauritania</option>
+				<option value="1" selected="">Mexico</option>
+				<option value="53">Monaco</option>
+				<option value="54">New Zealand</option>
+				<option value="55">Nicaragua</option>
+				<option value="73">No aplica</option>
+				<option value="56">Noruega / Norway</option>
+				<option value="71">Otro país no especificado.</option>
+				<option value="57">Panama</option>
+				<option value="58">Paraguay</option>
+				<option value="59">Peru</option>
+				<option value="60">Portugal</option>
+				<option value="61">Puerto Rico</option>
+				<option value="20">Republica Dominicana / Dominican Republic</option>
+				<option value="62">Saint Vincent and the Grenadines</option>
+				<option value="63">San Marino</option>
+				<option value="65">Suecia / Sweden</option>
+				<option value="66">Suiza / Switzerland</option>
+				<option value="67">Taiwan Region</option>
+				<option value="68">Trinidad and Tobago</option>
+				<option value="69">U.S.A. / United States of America</option>
+				<option value="70">Uruguay</option>
+				<option value="75">Varios paises</option>
+				<option value="74">Venezuela</option>
+			</select>
+			<div class="pedidotext">Código postal:</div>
+			<input type="text" name="cp">
+			<div class="pedidotext">Teléfono de facturación:</div>
+			<input type="text" name="telefonoadicional">
+			<h3>Información de entrega:</h3>
+			<div class="pedidotext">¿ Entregar en la dirección de facturación ?</div>
+			<select name="misma_direccion" id="select_direccion">
+				<option value="1">Si</option>
+				<option value="0">No</option>
+			</select>
+			<div id="direccion_entrega" class="no-display">
+				<div class="pedidotext">Persona que recibirá el pedido:</div>
+				<input type="text" name="personarecibira">
+				<div class="pedidotext">Dirección:</div>
+				<input type="text" name="callerecibira">
+				<div class="pedidotext">Colonia:</div>
+				<input type="text" name="coloniarecibira">
+				<div class="pedidotext">Delegación o municipio:</div>
+				<input type="text" name="delegacionrecibira">
+				<div class="pedidotext">Ciudad o población:</div>
+				<input type="text" name="ciudadrecibira">
+				<div class="pedidotext">Estado:</div>
+				<input type="text" name="estadorecibira">
+				<div class="pedidotext">Pais:</div>
+				<select name="paisrecibira_id">
+					<option value="2">Alemania / Germany</option>
+					<option value="3">Argentina</option>
+					<option value="4">Aruba</option>
+					<option value="5">Australia</option>
+					<option value="6">Bahamas</option>
+					<option value="7">Barbados</option>
+					<option value="76">Bélgica / Belgium</option>
+					<option value="8">Belice / Belize</option>
+					<option value="9">Bermuda</option>
+					<option value="10">Bolivia</option>
+					<option value="11">Brasil / Brazil</option>
+					<option value="12">Cameroon</option>
+					<option value="13">Canada</option>
+					<option value="15">Chile</option>
+					<option value="72">China</option>
+					<option value="16">Colombia</option>
+					<option value="17">Costa Rica</option>
+					<option value="18">Cuba</option>
+					<option value="42">D.P.R. Korea</option>
+					<option value="19">Dominica</option>
+					<option value="21">Ecuador</option>
+					<option value="22">El Salvador</option>
+					<option value="23">Equatorial Guinea</option>
+					<option value="64">España / Spain</option>
+					<option value="24">Francia / France</option>
+					<option value="25">Gibraltar</option>
+					<option value="26">Granada / Grenada</option>
+					<option value="27">Guatemala</option>
+					<option value="28">Guinea</option>
+					<option value="29">Guyana</option>
+					<option value="30">Haiti</option>
+					<option value="33">Holanda / Netherlands</option>
+					<option value="31">Honduras</option>
+					<option value="32">Hong Kong SAR, PRC</option>
+					<option value="34">India</option>
+					<option value="47">Inglaterra / United Kingdom</option>
+					<option value="35">Iran</option>
+					<option value="36">Iraq</option>
+					<option value="37">Irlanda / Ireland</option>
+					<option value="14">Islas Caimán / Cayman Islands</option>
+					<option value="48">Islas Malvinas / Maldives</option>
+					<option value="38">Israel</option>
+					<option value="39">Italia / Italy</option>
+					<option value="40">Jamaica</option>
+					<option value="41">Japón / Japan</option>
+					<option value="43">Korea</option>
+					<option value="44">Libano / Lebanon</option>
+					<option value="45">Liechtenstein</option>
+					<option value="46">Luxembourg</option>
+					<option value="49">Mali</option>
+					<option value="50">Malta</option>
+					<option value="51">Martinique</option>
+					<option value="52">Mauritania</option>
+					<option value="1" selected="">Mexico</option>
+					<option value="53">Monaco</option>
+					<option value="54">New Zealand</option>
+					<option value="55">Nicaragua</option>
+					<option value="73">No aplica</option>
+					<option value="56">Noruega / Norway</option>
+					<option value="71">Otro país no especificado.</option>
+					<option value="57">Panama</option>
+					<option value="58">Paraguay</option>
+					<option value="59">Peru</option>
+					<option value="60">Portugal</option>
+					<option value="61">Puerto Rico</option>
+					<option value="20">Republica Dominicana / Dominican Republic</option>
+					<option value="62">Saint Vincent and the Grenadines</option>
+					<option value="63">San Marino</option>
+					<option value="65">Suecia / Sweden</option>
+					<option value="66">Suiza / Switzerland</option>
+					<option value="67">Taiwan Region</option>
+					<option value="68">Trinidad and Tobago</option>
+					<option value="69">U.S.A. / United States of America</option>
+					<option value="70">Uruguay</option>
+					<option value="75">Varios paises</option>
+					<option value="74">Venezuela</option>
+				</select>
+				<div class="pedidotext">Código postal:</div>
+				<input type="text" name="cprecibira">
+				<div class="pedidotext">Teléfono:</div>
+				<input type="text" name="telrecibira">
+				<div class="pedidotext">E-mail:</div>
+				<input type="text" name="emailrecibira">
+			</div>
 			<div id="formas_de_pago"></div>
+			<br><br>
 			<input type="submit" value="Confirmar pedido" data-role="button" data-theme='b' data-icon='check' data-mini="true">
     	</form>
 	</div>

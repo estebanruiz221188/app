@@ -18,5 +18,22 @@ $(document).bind("mobileinit", function(){
 				  };
 
 	window.ROOT=routes[load_default_route];
+
+	/*$("#select_direccion").on( "change", function(event, ui) {
+  		console.log("cambio :D");
+	});*/
+});
+
+$(document).bind("ready", function(){
+	$("#select_direccion").change(function() {
+  		if($("#select_direccion").val()=="1")
+  		{
+  			$("#direccion_entrega").hide();
+  		}
+  		else
+  		{
+  			$("#direccion_entrega").show();
+  		}
+	});
 });
 
