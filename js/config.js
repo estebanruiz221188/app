@@ -9,7 +9,7 @@ $(document).bind("mobileinit", function(){
 	window.load_default_route = 1;
 
 	// Expositor ID
-	window.EXP = 1667;
+	window.EXP = 627;
 
 	// Rutas a las que se enviará la petición, en general: 0=> Debug, 1=> Producción.
 	window.routes={
