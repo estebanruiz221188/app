@@ -61,6 +61,15 @@ function search_products(formid)
 	_.pjp(ROOT+"?c=central&m=search_products",data,"check_response");
 }
 
+function lista_precios()
+{
+	data={};
+	data.expositor_id=EXP;
+	data.search="";
+	data.tipo="lista_precios";
+	_.pjp(ROOT+"?c=central&m=search_products",data,"check_response");
+}
+
 function agregar_al_carrito(id)
 {
 	if(typeof carrito==='undefined')
@@ -197,6 +206,20 @@ function mostrar_carrito_de_compras()
 function crear_pedido()
 {
 	$.mobile.changePage("#page8");
+	if($("#seleccionar_destino").html()=="")
+	{
+		_.pjp(ROOT+"?c=central&m=load_destinos",{"id":EXP},"check_response");
+	}
+	else
+	{
+		load_costos_envio();
+	}
+}
+
+function load_costos_envio()
+{
+	dest=$("#sel_dest").val();
+	_.pjp(ROOT+"?c=central&m=load_costos_envio",{"carrito":carrito,"destino":dest},"check_response");
 }
 
 function enviar_pedido()
@@ -216,6 +239,18 @@ function load_formas_de_pago()
 function seguircomprando()
 {
 	$.mobile.changePage('#page6');
+}
+
+function solicita_info(prod)
+{
+	$("#solicitar_informacion [name=producto]").val(prod);
+	$.mobile.changePage('#page10');
+}
+
+function enviar_solicitar_info()
+{
+	data=_.gf("solicitar_informacion");
+	_.pjp(ROOT+"?c=central&m=enviar_solicitar_info",{"expositor_id":EXP,"info":data},"check_response");
 }
 
 //load_minimos_y_multiplos();

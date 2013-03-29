@@ -13,7 +13,7 @@ $(document).bind("mobileinit", function(){
 
 	// Rutas a las que se enviará la petición, en general: 0=> Debug, 1=> Producción.
 	window.routes={
-					0:"http://localhost/app/",
+					0:"http://localhost/appexpos/",
 					1:"http://app.exposicionesvirtuales.com/"
 				  };
 

@@ -28,6 +28,7 @@
 			</div>
     	</form>
 		<button onclick="load_categories();">Productos por categorías</button>
+		<button onclick="lista_precios();">Lista de precios</button>
         <button onclick="load_pages();">Información de la empresa</button>
         <br>
         <div class="contact_bar">
@@ -149,7 +150,7 @@
 <div data-role="page" id="page7" class="pagina">
 	<div data-role="header">
     	<a href="#page" data-icon="home">Inicio</a>
-		<h1 id="titulo_busqueda">Carrito de compras</h1>
+		<h1>Carrito de compras</h1>
 	</div>
 	<div data-role="content">
 		<div id="lista_carrito">
@@ -168,11 +169,11 @@
 <div data-role="page" id="page8" class="pagina">
 	<div data-role="header">
     	<a href="#page" data-icon="home">Inicio</a>
-		<h1 id="titulo_busqueda">Confirmar pedido</h1>
+		<h1>Confirmar pedido</h1>
 	</div>
 	<div data-role="content">
 		<div class="variante">
-			Pedido por un total de: <span id="total_pedido"></span>
+			Pedido por un total de: <span id="total_pedido"></span> (IVA incluido) + gastos de envío.
 		</div>
 		<form id="pedido" action="javascript:enviar_pedido()">
 			<h3>Información general del comprador:</h3>
@@ -280,6 +281,7 @@
 			</select>
 			<div class="pedidotext">Código postal:</div>
 			<input type="text" name="cp">
+			<div id="seleccionar_destino"></div>
 			<div class="pedidotext">Teléfono de facturación:</div>
 			<input type="text" name="telefonoadicional">
 			<h3>Información de entrega:</h3>
@@ -382,6 +384,7 @@
 				</select>
 				<div class="pedidotext">Código postal:</div>
 				<input type="text" name="cprecibira">
+				<input type="hidden" name="destino" value="0">
 				<div class="pedidotext">Teléfono:</div>
 				<input type="text" name="telrecibira">
 				<div class="pedidotext">E-mail:</div>
@@ -405,7 +408,7 @@
 <div data-role="page" id="page9" class="pagina">
 	<div data-role="header">
     	<a href="#page" data-icon="home">Inicio</a>
-		<h1 id="titulo_busqueda">Enviando su pedido !</h1>
+		<h1>Enviando su pedido !</h1>
 	</div>
 	<div data-role="content">
 		<div class="variante">
@@ -413,6 +416,35 @@
 				
 			</div>
 		</div>
+	</div>
+	<div data-role="footer" data-id="foo1" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page6">Buscar</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="page10" class="pagina">
+	<div data-role="header">
+    	<a href="#page" data-icon="home">Inicio</a>
+		<h1>Solicitar información</h1>
+	</div>
+	<div data-role="content">
+		<form id="solicitar_informacion" action="javascript:enviar_solicitar_info()">
+			<input type="hidden" name="producto">
+			<div class="pedidotext">Nombre:</div>
+			<input type="text" name="nombre">
+			<div class="pedidotext">E-mail:</div>
+			<input type="text" name="email">
+			<div class="pedidotext">Teléfonos:</div>
+			<input type="text" name="telefonos">
+			<div class="pedidotext">Comentarios:</div>
+			<textarea name="comentarios"></textarea>
+			<br><br>
+			<input type="submit" value="Enviar" data-role="button" data-theme='b' data-icon='check' data-mini="true">
+		</form>
 	</div>
 	<div data-role="footer" data-id="foo1" data-position="fixed">
 		<div data-role="navbar">
